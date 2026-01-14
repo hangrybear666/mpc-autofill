@@ -178,3 +178,6 @@ MPCAutofill/drives.csv
 frontend/public/mockServiceWorker.js
 /image-cdn/node_modules/*
 /image-cdn/.wrangler/*
+
+.claude/
+CLAUDE.md
