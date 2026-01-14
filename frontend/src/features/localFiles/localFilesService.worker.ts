@@ -137,6 +137,10 @@ class Image {
   async getOramaCardDocument(
     tags: Map<string, Tag>
   ): Promise<OramaCardDocument> {
+    ////////// TEMPORARY DEBUG LOGGING ////////////
+    const searchq = toSearchable(this.name);
+    console.log('[INDEX]', this.name, '→', searchq);
+    ////////// TEMPORARY DEBUG LOGGING ////////////
     const { language, name, tags: extractedTags } = this.unpackName(tags);
     const resolvedPath = await this.getResolvedPath();
     // fall back on setting filepath to random string if unable to resolve. realistically this should never happen.
@@ -310,6 +314,9 @@ export class LocalFilesService {
     cardTypes: Array<CardType>,
     limit?: number
   ): Array<{ id: string; document: OramaCardDocument }> | undefined {
+    ////////// TEMPORARY DEBUG LOGGING ////////////
+    console.log('[SEARCH] Query:', query, 'CardTypes:', cardTypes);
+    ////////// TEMPORARY DEBUG LOGGING ////////////
     if (this.directoryIndex?.index?.oramaDb === undefined) {
       return undefined;
     }

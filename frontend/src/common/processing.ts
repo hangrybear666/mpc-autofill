@@ -54,12 +54,16 @@ export function stripTextInParentheses(text: string): string {
 export function processQuery(query: string): string {
   // TODO: remove any numbers from the front
   // escaping \[ is technically unnecessary, but I think it's more readable to escape it
-  return sanitiseWhitespace(
+  const result = sanitiseWhitespace(
     query
       .toLowerCase()
       .trim()
       .replace(/[~`!@#$%^&*(){}\[\];:"'’<,.>?/\\|_+=]/g, "")
   );
+  ////////// TEMPORARY DEBUG LOGGING ////////////
+  console.log('[PROCESS QUERY]', query, '→', result);
+  ////////// TEMPORARY DEBUG LOGGING ////////////
+  return toSearchable(query)
 }
 
 /**
